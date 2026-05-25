@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ site.description }}">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="/feed.xml">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/">Jiashu Xu</a>
+      <nav aria-label="Primary navigation">
+        <a href="/blog/">Blog</a>
+        <a href="/about/">About</a>
+        <a href="https://github.com/CraveDL">GitHub</a>
+      </nav>
+    </header>
+    <main>
+      {{ content }}
+    </main>
+    <footer class="site-footer">
+      <span>Practical AI engineering notes.</span>
+      <a href="mailto:happybird924@gmail.com">happybird924@gmail.com</a>
+    </footer>
+  </body>
+</html>
+
