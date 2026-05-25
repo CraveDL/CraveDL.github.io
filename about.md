@@ -6,7 +6,7 @@ permalink: /about/
 
 <section class="page-heading">
   <p class="eyebrow">About</p>
-  <h1>Hi, I'm Jiashu Xu.</h1>
+  <h1>Hi, I'm Sam.</h1>
   <p class="lead">
     I am an NLP / LLM Algorithm Engineer with 8+ years of experience building AI systems
     for finance, insurance, e-commerce, and enterprise intelligent service scenarios.
@@ -42,4 +42,3 @@ permalink: /about/
     <li>Participated in 3 Chinese invention patents and published 2 research papers.</li>
   </ul>
 </section>
-

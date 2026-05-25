@@ -1,4 +1,4 @@
-# Jiashu Xu Technical Blog
+# Sam Technical Blog
 
 This is the source repository for the GitHub Pages site at:
 

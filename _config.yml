@@ -1,9 +1,9 @@
-title: Jiashu Xu
+title: Sam
 description: Practical notes on NLP, LLM applications, RAG, multimodal document understanding, and knowledge graphs.
 url: "https://cravedl.github.io"
 baseurl: ""
 author:
-  name: Jiashu Xu
+  name: Sam
   github: CraveDL
   email: happybird924@gmail.com
 markdown: kramdown

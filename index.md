@@ -17,7 +17,7 @@ title: Home
       <a class="button secondary" href="/about/">About me</a>
     </div>
   </div>
-  <img class="avatar" src="https://github.com/CraveDL.png" alt="Jiashu Xu GitHub avatar">
+  <img class="avatar" src="https://github.com/CraveDL.png" alt="Sam GitHub avatar">
 </section>
 
 <section class="metrics" aria-label="Selected project impact">
@@ -62,4 +62,3 @@ title: Home
     {% endif %}
   </article>
 </section>
-
