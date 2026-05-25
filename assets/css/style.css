@@ -259,6 +259,26 @@ li + li {
   margin-top: 38px;
 }
 
+.post-content figure {
+  margin: 34px 0;
+}
+
+.post-content img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.post-content figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
 .post-content p,
 .post-content li {
   color: #293342;
@@ -310,4 +330,3 @@ li + li {
     gap: 24px;
   }
 }
-
