@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420" role="img" aria-labelledby="title desc">
+  <title id="title">MHA, MQA, and GQA compare query and KV heads</title>
+  <desc id="desc">A diagram comparing multi-head attention, multi-query attention, and grouped-query attention.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f7f7f4; }
+      .card { fill: #ffffff; stroke: #d9ddd5; stroke-width: 2; }
+      .ink { fill: #18212f; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+      .muted { fill: #5b6678; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+      .q { fill: #0f766e; }
+      .kv { fill: #a16207; }
+      .group { fill: #1e40af; opacity: 0.12; stroke: #1e40af; stroke-width: 2; }
+    </style>
+  </defs>
+  <rect class="bg" width="980" height="420"/>
+  <text x="54" y="54" class="ink" font-size="28" font-weight="760">MHA, MQA, and GQA reduce KV memory differently</text>
+  <text x="54" y="86" class="muted" font-size="16">FlashAttention optimizes the kernel; MQA/GQA reduce the amount of K/V cache the model needs.</text>
+
+  <rect x="54" y="136" width="268" height="224" rx="8" class="card"/>
+  <text x="84" y="174" class="ink" font-size="22" font-weight="740">MHA</text>
+  <text x="84" y="202" class="muted" font-size="15">each Q head has its own K/V</text>
+  <g transform="translate(84,236)">
+    <rect width="32" height="32" rx="5" class="q"/><rect x="44" width="32" height="32" rx="5" class="q"/><rect x="88" width="32" height="32" rx="5" class="q"/><rect x="132" width="32" height="32" rx="5" class="q"/>
+    <rect y="48" width="32" height="32" rx="5" class="kv"/><rect x="44" y="48" width="32" height="32" rx="5" class="kv"/><rect x="88" y="48" width="32" height="32" rx="5" class="kv"/><rect x="132" y="48" width="32" height="32" rx="5" class="kv"/>
+    <text x="188" y="22" class="ink" font-size="15">Q heads</text>
+    <text x="188" y="70" class="ink" font-size="15">K/V heads</text>
+  </g>
+
+  <rect x="356" y="136" width="268" height="224" rx="8" class="card"/>
+  <text x="386" y="174" class="ink" font-size="22" font-weight="740">MQA</text>
+  <text x="386" y="202" class="muted" font-size="15">many Q heads share one K/V head</text>
+  <g transform="translate(386,236)">
+    <rect width="32" height="32" rx="5" class="q"/><rect x="44" width="32" height="32" rx="5" class="q"/><rect x="88" width="32" height="32" rx="5" class="q"/><rect x="132" width="32" height="32" rx="5" class="q"/>
+    <rect x="66" y="48" width="32" height="32" rx="5" class="kv"/>
+    <text x="188" y="22" class="ink" font-size="15">Q heads</text>
+    <text x="188" y="70" class="ink" font-size="15">shared K/V</text>
+  </g>
+
+  <rect x="658" y="136" width="268" height="224" rx="8" class="card"/>
+  <text x="688" y="174" class="ink" font-size="22" font-weight="740">GQA</text>
+  <text x="688" y="202" class="muted" font-size="15">groups of Q heads share K/V</text>
+  <g transform="translate(688,230)">
+    <rect x="-8" y="-8" width="82" height="96" rx="8" class="group"/>
+    <rect x="80" y="-8" width="82" height="96" rx="8" class="group"/>
+    <rect width="32" height="32" rx="5" class="q"/><rect x="40" width="32" height="32" rx="5" class="q"/><rect x="88" width="32" height="32" rx="5" class="q"/><rect x="128" width="32" height="32" rx="5" class="q"/>
+    <rect x="20" y="48" width="32" height="32" rx="5" class="kv"/><rect x="108" y="48" width="32" height="32" rx="5" class="kv"/>
+    <text x="184" y="22" class="ink" font-size="15">Q heads</text>
+    <text x="184" y="70" class="ink" font-size="15">grouped K/V</text>
+  </g>
+</svg>
+

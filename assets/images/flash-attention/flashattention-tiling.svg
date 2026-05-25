@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="460" viewBox="0 0 980 460" role="img" aria-labelledby="title desc">
+  <title id="title">FlashAttention uses tiling to avoid materializing attention matrices</title>
+  <desc id="desc">A diagram showing K and V tiles loaded once, Q blocks streamed through SRAM, and output updated incrementally.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f7f7f4; }
+      .card { fill: #ffffff; stroke: #d9ddd5; stroke-width: 2; }
+      .hbm { fill: #fff7ed; stroke: #a16207; stroke-width: 2; }
+      .sram { fill: #ecfeff; stroke: #0f766e; stroke-width: 2; }
+      .ink { fill: #18212f; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+      .muted { fill: #5b6678; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+      .tileQ { fill: #0f766e; opacity: 0.86; }
+      .tileK { fill: #1e40af; opacity: 0.86; }
+      .tileV { fill: #a16207; opacity: 0.86; }
+      .line { stroke: #5b6678; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5b6678"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="980" height="460"/>
+  <text x="54" y="54" class="ink" font-size="28" font-weight="760">FlashAttention is IO-aware attention</text>
+  <text x="54" y="86" class="muted" font-size="16">It computes attention in tiles and never stores full S or P in HBM.</text>
+
+  <rect x="58" y="142" width="236" height="230" rx="10" class="hbm"/>
+  <text x="92" y="180" class="ink" font-size="22" font-weight="740">HBM</text>
+  <text x="92" y="210" class="muted" font-size="15">Q, K, V, O, m, l</text>
+  <g transform="translate(92,244)">
+    <rect width="42" height="42" rx="5" class="tileQ"/><rect x="50" width="42" height="42" rx="5" class="tileQ" opacity="0.65"/><rect x="100" width="42" height="42" rx="5" class="tileQ" opacity="0.45"/>
+    <text x="160" y="28" class="ink" font-size="16">Q blocks</text>
+    <rect y="62" width="42" height="42" rx="5" class="tileK"/><rect x="50" y="62" width="42" height="42" rx="5" class="tileV"/>
+    <text x="110" y="90" class="ink" font-size="16">K/V tile</text>
+  </g>
+
+  <path d="M306 256 H402" class="line"/>
+
+  <rect x="416" y="142" width="286" height="230" rx="10" class="sram"/>
+  <text x="452" y="180" class="ink" font-size="22" font-weight="740">On-chip SRAM</text>
+  <text x="452" y="210" class="muted" font-size="15">small blocks fit here</text>
+  <rect x="456" y="246" width="74" height="52" rx="6" class="tileQ"/>
+  <rect x="548" y="246" width="74" height="52" rx="6" class="tileK"/>
+  <rect x="640" y="246" width="42" height="52" rx="6" class="tileV"/>
+  <text x="476" y="278" fill="#fff" font-size="16" font-family="Inter, sans-serif">Q_i</text>
+  <text x="568" y="278" fill="#fff" font-size="16" font-family="Inter, sans-serif">K_j</text>
+  <text x="651" y="278" fill="#fff" font-size="16" font-family="Inter, sans-serif">V_j</text>
+  <text x="456" y="330" class="ink" font-size="16">local S_ij, local softmax, update O_i</text>
+
+  <path d="M714 256 H810" class="line"/>
+
+  <rect x="824" y="176" width="110" height="150" rx="10" class="card"/>
+  <text x="858" y="230" class="ink" font-size="26" font-weight="760">O</text>
+  <text x="842" y="262" class="muted" font-size="15">final output</text>
+</svg>
+

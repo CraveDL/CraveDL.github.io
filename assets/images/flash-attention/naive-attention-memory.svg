@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="450" viewBox="0 0 980 450" role="img" aria-labelledby="title desc">
+  <title id="title">Naive attention creates large HBM traffic</title>
+  <desc id="desc">A diagram showing Q K V in HBM, intermediate S and P matrices written back to HBM, and final output O.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f7f7f4; }
+      .card { fill: #ffffff; stroke: #d9ddd5; stroke-width: 2; }
+      .hbm { fill: #fff7ed; stroke: #a16207; stroke-width: 2; }
+      .sram { fill: #ecfeff; stroke: #0f766e; stroke-width: 2; }
+      .bad { fill: #fee2e2; stroke: #b91c1c; stroke-width: 2; }
+      .ink { fill: #18212f; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+      .muted { fill: #5b6678; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+      .line { stroke: #5b6678; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .warn { fill: #b91c1c; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5b6678"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="980" height="450"/>
+  <text x="54" y="54" class="ink" font-size="28" font-weight="760">Naive attention is IO-heavy</text>
+  <text x="54" y="86" class="muted" font-size="16">The expensive part is often moving intermediate matrices through HBM, not just doing matmul.</text>
+
+  <rect x="64" y="136" width="190" height="244" rx="10" class="hbm"/>
+  <text x="100" y="174" class="ink" font-size="22" font-weight="740">HBM</text>
+  <text x="100" y="204" class="muted" font-size="15">large, off-chip</text>
+  <text x="102" y="248" class="ink" font-size="20">Q, K, V</text>
+  <text x="102" y="284" class="warn" font-size="20" font-weight="720">S = QK^T</text>
+  <text x="102" y="320" class="warn" font-size="20" font-weight="720">P = softmax(S)</text>
+
+  <rect x="392" y="136" width="194" height="244" rx="10" class="sram"/>
+  <text x="438" y="174" class="ink" font-size="22" font-weight="740">SRAM</text>
+  <text x="438" y="204" class="muted" font-size="15">small, on-chip</text>
+  <text x="426" y="250" class="ink" font-size="20">compute blocks</text>
+
+  <path d="M258 214 H386" class="line"/>
+  <path d="M386 276 H258" class="line"/>
+  <path d="M258 316 H386" class="line"/>
+  <path d="M386 350 H258" class="line"/>
+
+  <rect x="698" y="166" width="218" height="178" rx="10" class="bad"/>
+  <text x="734" y="206" class="ink" font-size="22" font-weight="740">N x N matrices</text>
+  <text x="734" y="244" class="muted" font-size="16">S and P grow quadratically</text>
+  <text x="734" y="280" class="warn" font-size="18" font-weight="720">sequence length N</text>
+  <text x="734" y="310" class="warn" font-size="18" font-weight="720">memory ~ O(N^2)</text>
+  <path d="M590 256 H692" class="line"/>
+</svg>
+
